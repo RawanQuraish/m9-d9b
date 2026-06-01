@@ -1,0 +1,59 @@
+@prefix : <https://example.org/recipes#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Classes
+:Ingredient a rdfs:Class ;
+    rdfs:label "Ingredient" .
+
+:Color a rdfs:Class ;
+    rdfs:label "Color" .
+
+:Cuisine a rdfs:Class ;
+    rdfs:label "Cuisine" .
+
+:Author a rdfs:Class ;
+    rdfs:label "Author" .
+
+# Ambiguous surface form #1 — "orange" matches an ingredient AND a color
+:orangeFruit a :Ingredient ;
+    skos:prefLabel "orange" ;
+    skos:altLabel "naranja" .
+
+:orangeColor a :Color ;
+    skos:prefLabel "orange" ;
+    skos:altLabel "amber" .
+
+# Ambiguous surface form #2 — "turkey" matches an ingredient AND a cuisine
+:turkeyBird a :Ingredient ;
+    skos:prefLabel "turkey" ;
+    skos:altLabel "tom" .
+
+:turkeyDestination a :Cuisine ;
+    skos:prefLabel "turkey" ;
+    skos:altLabel "turkish" .
+
+# Unambiguous ingredients
+:eggplant a :Ingredient ;
+    skos:prefLabel "eggplant" ;
+    skos:altLabel "aubergine" .
+
+:basil a :Ingredient ;
+    skos:prefLabel "basil" ;
+    skos:altLabel "sweet basil" .
+
+:salt a :Ingredient ;
+    skos:prefLabel "salt" .
+
+# Unambiguous cuisines
+:italianCuisine a :Cuisine ;
+    skos:prefLabel "italian" .
+
+:thaiCuisine a :Cuisine ;
+    skos:prefLabel "thai" ;
+    skos:altLabel "siamese" .
+
+# Unambiguous author
+:annaAuthor a :Author ;
+    skos:prefLabel "anna" .
