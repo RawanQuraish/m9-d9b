@@ -1,9 +1,8 @@
-# Module 9 Week B Drill — Fork-and-Submit Flow
+# Module 9 Week B — Core Skills Drill — Fork-and-Submit Flow
 
-All Module 9 Week B assignments use a fork-and-submit flow instead of
-GitHub Classroom. GitHub is sunsetting Classroom (full transition
-2026-08-28), and the M8 module-wide pivot on 2026-05-31 validated this
-replacement.
+All Module 9 assignments use a fork-and-submit flow instead of GitHub
+Classroom. GitHub is sunsetting Classroom (full transition 2026-08-28);
+M8 and M9 are on the fork-and-submit replacement.
 
 ## 5 steps
 
@@ -12,18 +11,20 @@ replacement.
 2. **Enable Actions on your fork.** Actions tab → click *"I understand my
    workflows, go ahead and enable them"*. One-time per fork; the autograder
    cannot run on your PR until this is done.
-3. **Clone your fork** (not this repo): `git clone https://github.com/<you>/m9-d9b.git`
+3. **Clone your fork** (not this repo):
+   `git clone https://github.com/<you>/m9-d9b.git`
 4. **Branch, implement, commit, push:**
    ```bash
-   git checkout -b drill-skos-lookup
-   # edit the drill files (see the Core Skills Drill page for the deliverables)
+   git checkout -b drill-9b-cypher-translation
+   # edit the files (see the Core Skills Drill guide for the deliverables)
    git add .
-   git commit -m "Drill 9B: SKOS lookup warm-up"
-   git push origin drill-skos-lookup
+   git commit -m "drill-9b: implementation"
+   git push origin drill-9b-cypher-translation
    ```
-5. **Open a PR *within your fork*** — base `main`, compare `drill-skos-lookup`,
+5. **Open a PR *within your fork*** — base `main`, compare `drill-9b-cypher-translation`,
    **base repository = your fork** (GitHub defaults to upstream — change it).
-   When CI passes, paste the PR URL into TalentLMS → Module 9 → Drill 9B.
+   When CI passes, paste the PR URL into
+   TalentLMS → Module 9 Week B → Core Skills Drill.
 
 ## Common failure modes
 
@@ -35,6 +36,8 @@ replacement.
 - **Actions disabled on the fork.** No green or red CI check on the PR.
   Re-do Setup step 2, then push an empty commit to retrigger:
   `git commit --allow-empty -m "ci: trigger" && git push`.
-- **Forgot to start Fuseki locally before running `pytest tests/ -v`.**
+- **Forgot to start Neo4j locally before running `pytest tests/ -v`.**
   Local tests fail but CI is fine — the autograder workflow brings up its
-  own Fuseki service container.
+  own Neo4j service container. For local runs:
+  `docker compose up -d && docker compose logs -f neo4j | head` and wait
+  for the "Started." line before invoking pytest.
